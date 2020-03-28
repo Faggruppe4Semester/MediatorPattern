@@ -51,10 +51,7 @@ namespace MediatorPattern.ViewModels
 
         public override bool IsValid()
         {
-            if (string.IsNullOrEmpty(Text))
-                return false;
-            else
-                return true;
+            return !string.IsNullOrEmpty(Text);
         }
 
         private ICommand _notifyMediator;
