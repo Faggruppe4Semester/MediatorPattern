@@ -24,16 +24,17 @@ namespace MediatorPattern.ViewModels
         public MainWindowViewModel()
         {
             Mediator = new Mediator();
-            TBoxFN = new TBox(Mediator);
-            TBoxLN = new TBox(Mediator);
-            TBoxEmail = new TBox(Mediator);
-            TBoxAge = new TBox(Mediator);
+            TBoxFN = new TBox(Mediator, MessageType.Input);
+            TBoxLN = new TBox(Mediator, MessageType.Input);
+            TBoxEmail = new TBox(Mediator, MessageType.Input);
+            TBoxAge = new TBox(Mediator, MessageType.Input);
             RegisterBtn = new Btn(Mediator);
         }
 
     }
-    public class TBox : IObserver
+    public class TBox : Observer
     {
+        public MessageType MessageType { get; set; }
         private string text;
 
         public string Text
@@ -43,9 +44,13 @@ namespace MediatorPattern.ViewModels
 
         }
 
-        public TBox(Mediator m) : base(m)
+        public TBox(Mediator m, MessageType msgType) : base(m)
         {
+            MessageType = msgType;
         }
+
+        public override void Update(bool state)
+        { }
 
         public override bool IsValid()
         {
@@ -57,17 +62,17 @@ namespace MediatorPattern.ViewModels
 
         private ICommand _notifyMediator;
 
-        public ICommand NotifyMediator => _notifyMediator ?? (_notifyMediator = new DelegateCommand(Update));
+        public ICommand NotifyMediator => _notifyMediator ?? (_notifyMediator = new DelegateCommand<object>(Mediator.Notify));
     }
 
-    public class Btn : IObserver
+    public class Btn : Observer
     {
-        private bool state;
+        private bool _btnIsEnabled;
 
         public bool BtnIsEnabled
         {
-            get => state;
-            set => SetProperty(ref state, value);
+            get => _btnIsEnabled;
+            set => SetProperty(ref _btnIsEnabled, value);
         }
 
         public Btn(Mediator m) : base(m)
@@ -75,9 +80,9 @@ namespace MediatorPattern.ViewModels
             BtnIsEnabled = false;
         }
 
-        public override void MakeBtnActive()
+        public override void Update(bool state)
         {
-            BtnIsEnabled = true;
+            BtnIsEnabled = state;
         }
     }
 }

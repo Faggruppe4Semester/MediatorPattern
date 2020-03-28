@@ -51,7 +51,7 @@
                  Text="{Binding TBoxFN.Text, NotifyOnSourceUpdated=True}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SourceUpdated">
-                    <i:InvokeCommandAction Command="{Binding TBoxFN.NotifyMediator}"/>
+                    <i:InvokeCommandAction Command="{Binding TBoxFN.NotifyMediator}" CommandParameter="{Binding TBoxFN.MessageType}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
@@ -65,7 +65,7 @@
                  Text="{Binding TBoxLN.Text, NotifyOnSourceUpdated=True}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SourceUpdated">
-                    <i:InvokeCommandAction Command="{Binding TBoxLN.NotifyMediator}" />
+                    <i:InvokeCommandAction Command="{Binding TBoxLN.NotifyMediator}" CommandParameter="{Binding TBoxLN.MessageType}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
@@ -79,7 +79,7 @@
                  Text="{Binding TBoxEmail.Text, NotifyOnSourceUpdated=True}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SourceUpdated">
-                    <i:InvokeCommandAction Command="{Binding TBoxEmail.NotifyMediator}"/>
+                    <i:InvokeCommandAction Command="{Binding TBoxEmail.NotifyMediator}" CommandParameter="{Binding TBoxEmail.MessageType}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
@@ -93,7 +93,7 @@
                  Text="{Binding TBoxAge.Text, NotifyOnSourceUpdated=True}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SourceUpdated">
-                    <i:InvokeCommandAction Command="{Binding TBoxAge.NotifyMediator }"/>
+                    <i:InvokeCommandAction Command="{Binding TBoxAge.NotifyMediator }" CommandParameter="{Binding TBoxAge.MessageType}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>

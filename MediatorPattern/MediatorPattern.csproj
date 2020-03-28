@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Observer.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -82,8 +83,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\IMediator.cs" />
-    <Compile Include="Models\ISubject.cs" />
+    <Compile Include="Models\Mediator.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
