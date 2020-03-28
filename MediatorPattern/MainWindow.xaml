@@ -4,9 +4,105 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediatorPattern"
+        xmlns:viewModels="clr-namespace:MediatorPattern.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="300" Width="400">
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Firstname"
+                   Grid.Column="0" Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Margin="5"/>
+        <TextBlock Text="Lastname"
+                   Grid.Column="0" Grid.Row="1"
+                   VerticalAlignment="Center"
+                   Margin="5"/>
+        <TextBlock Text="Email"
+                   Grid.Column="0" Grid.Row="2"
+                   VerticalAlignment="Center"
+                   Margin="5"/>
+        <TextBlock Text="Age"
+                   Grid.Column="0" Grid.Row="3"
+                   VerticalAlignment="Center"
+                   Margin="5"/>
+
+        <TextBox Name="TBoxFirstName"
+                 Grid.Column="1" Grid.Row="0"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 MinWidth="150"
+                 Margin="5"
+                 Text="{Binding TBoxFN.Text, NotifyOnSourceUpdated=True}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SourceUpdated">
+                    <i:InvokeCommandAction Command="{Binding TBoxFN.NotifyMediator}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+
+        <TextBox Name="TBoxLastName"
+                 Grid.Column="1" Grid.Row="1"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 MinWidth="150"
+                 Margin="5"
+                 Text="{Binding TBoxLN.Text, NotifyOnSourceUpdated=True}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SourceUpdated">
+                    <i:InvokeCommandAction Command="{Binding TBoxLN.NotifyMediator}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+
+        <TextBox Name="TBoxEmail"
+                 Grid.Column="1" Grid.Row="2"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 MinWidth="150"
+                 Margin="5"
+                 Text="{Binding TBoxEmail.Text, NotifyOnSourceUpdated=True}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SourceUpdated">
+                    <i:InvokeCommandAction Command="{Binding TBoxEmail.NotifyMediator}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+
+        <TextBox Name="TBoxAge"
+                 Grid.Column="1" Grid.Row="3"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 MinWidth="150"
+                 Margin="5"
+                 Text="{Binding TBoxAge.Text, NotifyOnSourceUpdated=True}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SourceUpdated">
+                    <i:InvokeCommandAction Command="{Binding TBoxAge.NotifyMediator }"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+
+            <Button Content="Register"
+                    VerticalAlignment="Center"
+                    Margin="5"
+                    Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
+                    IsEnabled="{Binding RegisterBtn.BtnIsEnabled}"/>
+
     </Grid>
 </Window>
