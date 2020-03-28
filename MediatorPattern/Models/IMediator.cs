@@ -31,7 +31,14 @@ namespace MediatorPattern.Models
                 {
                     foreach (var observer in observers)
                     {
-                        observer.MakeBtnActive();
+                        observer.ChangeBtnState(true);
+                    }
+                }
+                else
+                {
+                    foreach (var observer in observers)
+                    {
+                        observer.ChangeBtnState(false);
                     }
                 }
             }

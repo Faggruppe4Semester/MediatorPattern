@@ -75,9 +75,9 @@ namespace MediatorPattern.ViewModels
             BtnIsEnabled = false;
         }
 
-        public override void MakeBtnActive()
+        public override void ChangeBtnState(bool state)
         {
-            BtnIsEnabled = true;
+            BtnIsEnabled = state;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace MediatorPattern.Models
 
         public virtual bool IsValid() => true;
 
-        public virtual void MakeBtnActive() {}
+        public virtual void ChangeBtnState(bool state) {}
 
     }
 }
