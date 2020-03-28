@@ -18,8 +18,9 @@ namespace MediatorPattern.Models
             Mediator.Attach(this);
         }
 
-        public abstract void Update(bool state);
+        //Hook-Methods for optional update in internal object, or extra validation.
+        public virtual void Update(bool state) { }
 
-        public virtual bool IsValid() => true; //Hook-Method for validation-check.
+        public virtual bool IsValid() => true;
     }
 }

@@ -49,9 +49,6 @@ namespace MediatorPattern.ViewModels
             MessageType = msgType;
         }
 
-        public override void Update(bool state)
-        { }
-
         public override bool IsValid()
         {
             if (string.IsNullOrEmpty(Text))
